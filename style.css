@@ -1,0 +1,419 @@
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background-color: #0f0f0f; /* deep dark */
+  background-image: radial-gradient(
+    rgba(255, 255, 255, 0.02) 1px,
+    transparent 1px
+  );
+  background-size: 20px 20px;
+  font-family: "Georgia", serif;
+  color: #f5d97c;
+  overflow-x: hidden;
+}
+
+.btn {
+  width: 190px;
+  height: 190px;
+  margin: 5px;
+  position: absolute;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: 8px solid #1b1b1b; /* thinner dark inner border */
+  box-shadow: inset 0 0 4px #00000088, 0 4px 8px rgba(0, 0, 0, 0.6);
+  transition: filter 0.2s, transform 0.2s;
+  z-index: 1;
+}
+
+.btn-container {
+  position: relative;
+  width: 420px;
+  height: 420px;
+  padding: 10px;
+  margin: 2rem auto;
+  border-radius: 50%;
+  background-color: #0c0c0c;
+  box-shadow: inset 0 0 25px #000, 0 0 40px #000000a0;
+  margin-top: 20px;
+}
+
+#score-box {
+  background-color: #2e5e3a; /* green base */
+  padding: 12px 32px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #f5d97c;
+  font-family: "Georgia", serif;
+
+  border: 4px solid #1b3a25;
+  border-radius: 6px;
+
+  box-shadow: inset 2px 2px 0 #4c7b50, inset -2px -2px 0 #1c3a26,
+    0 4px 12px rgba(0, 0, 0, 0.5);
+
+  display: inline-block;
+  cursor: default;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+  text-shadow: 1px 1px 2px #000;
+}
+
+/* Hover effect just like the Start button */
+#score-box:hover {
+  background-color: #3f814e;
+  box-shadow: inset 1px 1px 0 #66a96c, inset -1px -1px 0 #285337,
+    0 6px 16px rgba(0, 0, 0, 0.6);
+}
+
+/* 🔴 Top-left - RED */
+#red {
+  top: 0;
+  left: 0;
+  border-radius: 100% 0 35% 0;
+  background-image: url("cover-red.png");
+  border: 8px solid #79371d;
+  background-size: cover;
+}
+
+/* 🟢 Top-right - GREEN */
+#green {
+  top: 0;
+  right: 0;
+  border-radius: 0 100% 0 35%;
+  background-image: url("cover-green.png");
+  border: 8px solid #1f4029;
+  background-size: cover;
+}
+
+/* 🟡 Bottom-left - YELLOW/ORANGE */
+#yellow {
+  bottom: 0;
+  left: 0;
+  border-radius: 0 35% 0 100%;
+  background-image: url("cover-yellow.png");
+  border: 8px solid #664416;
+  background-size: cover;
+}
+
+/* 🔵 Bottom-right - BLUE/PURPLE */
+#purple {
+  bottom: 0;
+  right: 0;
+  border-radius: 35% 0 100% 0;
+  background-image: url("cover-purple.png");
+  border: 8px solid #12343f;
+  background-size: cover;
+}
+
+.flash {
+  filter: brightness(2);
+  transform: scale(1.05);
+}
+
+.userflash {
+  filter: brightness(1.4);
+  transform: scale(0.98);
+}
+
+#start {
+  padding: 12px 32px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #f5d97c;
+  font-family: "Georgia", serif;
+  background-color: #8b2e1d;
+  border: 4px solid #3e1e10;
+  border-radius: 6px;
+  box-shadow: inset 2px 2px 0 #c95f37, inset -2px -2px 0 #5a1e13,
+    0 4px 12px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+#start:hover {
+  background-color: #a23926;
+  box-shadow: inset 1px 1px 0 #e6734e, inset -1px -1px 0 #7a291a,
+    0 6px 16px rgba(0, 0, 0, 0.6);
+}
+
+#start:active {
+  transform: translateY(2px);
+  box-shadow: inset 2px 2px 4px #3a1b10, 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+#game-status {
+  display: inline-block;
+  margin: 1rem auto;
+  padding: 10px 24px;
+  background-color: #1e1e1e;
+  color: #f5d97c;
+  font-size: 24px;
+  font-weight: bold;
+  font-family: "Georgia", serif;
+  border: 4px solid #a66b2b;
+  border-radius: 6px;
+  box-shadow: inset 2px 2px 0 #703c13, inset -2px -2px 0 #703c13;
+}
+
+h2,
+#game-status {
+  text-align: center;
+  display: none; /* hidden by default */
+}
+
+.ui-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem; /* reduced spacing between score, level, and start */
+  margin-top: 0.5rem; /* reduced spacing from h1 */
+  margin-bottom: 0.5rem;
+}
+
+.ui-panel {
+  justify-content: center;
+  text-align: center;
+}
+
+h1 {
+  color: #f5d97c; /* golden yellow */
+  font-family: "Georgia", serif;
+  font-size: 48px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 1px 1px 2px #000000, 0 0 5px rgba(0, 0, 0, 0.5);
+  margin-bottom: 0.5rem;
+}
+
+.start-score-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem; /* space between start and score */
+  justify-content: center;
+}
+
+#start,
+#score-box {
+  margin: 0;
+}
+
+.btn-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 90px;
+  height: 90px;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+#green .btn-icon {
+  transform: translate(-40%, -30%) rotate(-70deg);
+  scale: 1.4;
+}
+#red .btn-icon {
+  transform: translate(-25%, -20%) rotate(-20deg);
+  scale: 1.4;
+}
+#yellow .btn-icon {
+  transform: translate(-20%, -40%) rotate(-40deg);
+  scale: 1.4;
+}
+#purple .btn-icon {
+  transform: translate(-60%, -40%) rotate(25deg);
+  scale: 1.4;
+}
+
+.btn-icon {
+  user-select: none;
+  -webkit-user-drag: none;
+  pointer-events: none; /* already present */
+}
+
+.btn {
+  cursor: pointer;
+}
+
+@media (max-width: 460px) {
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  #start-btn,
+  #score-box {
+    font-size: 0.9rem;
+    padding: 8px 16px;
+    width: 120px;
+  }
+
+  #level-title {
+    font-size: 1.1rem;
+    padding: 6px 14px;
+  }
+}
+
+@media (max-width: 768px) {
+  .btn-container {
+    transform: scale(0.9);
+  }
+}
+
+@media (max-width: 600px) {
+  .btn-container {
+    transform: scale(0.8);
+  }
+}
+
+@media (max-width: 460px) {
+  .btn-container {
+    transform: scale(0.7);
+  }
+}
+
+@media (max-width: 410px) {
+  .btn-container {
+    transform: scale(0.65) translateX(-10px); /* shift ring slightly left */
+  }
+
+  footer {
+    margin-top: 10px; /* pull footer slightly up */
+  }
+}
+
+/* ✅ iPhone 14 (390px logical width) */
+@media (max-width: 390px) {
+  .btn-container {
+    transform: scale(0.65) translateX(-30px); /* more shift & smaller size */
+  }
+
+  footer {
+    margin-top: -10px; /* moved slightly further up */
+  }
+}
+
+@media (max-width: 360px) {
+  .btn-container {
+    transform: scale(0.6) translateX(-60px);
+  }
+
+  footer {
+    margin-top: -20px;
+  }
+}
+
+@media (max-width: 330px) {
+  .btn-container {
+    transform: scale(0.55) translateX(-110px);
+  }
+
+  footer {
+    margin-top: -25px;
+  }
+
+  .start-score-row {
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+}
+
+@media (max-width: 303px) {
+  .start-score-row {
+    flex-direction: column;
+    align-items: center;
+    gap: 4px; /* slightly tighter spacing */
+  }
+
+  .btn-container {
+    transform: scale(0.5) translateX(-170px); /* further adjust for small screens */
+  }
+
+  footer {
+    margin-top: -30px;
+  }
+}
+
+.footer {
+  text-align: center;
+  padding: 20px 0;
+  color: #ddd;
+  background-color: #0f0f0f;
+  margin-top: 10px;
+  font-family: "Segoe UI", sans-serif;
+}
+
+.footer-links {
+  margin-bottom: 10px;
+}
+
+.footer-btn {
+  margin: 0 6px; /* Slightly reduced spacing */
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(to right, #2d2d2d, #1c1c1c);
+  color: #f8f8f8;
+  padding: 8px 16px;
+  border: 2px solid #3f3f3f;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 14px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.footer-btn:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 6px 18px rgba(255, 255, 255, 0.15);
+  border-color: #777;
+  background: linear-gradient(to right, #444, #222);
+}
+
+.footer-icon {
+  font-size: 18px;
+}
+
+.footer-btn i {
+  margin-right: 6px;
+}
+
+/* GitHub */
+.footer-btn.github {
+  background-color: #444;
+}
+
+.footer-btn.github:hover {
+  background-color: #5a5a5a;
+}
+
+/* Twitter/X */
+.footer-btn.twitter {
+  background-color: #1a1a1a;
+}
+
+.footer-btn.twitter:hover {
+  background-color: #2a2a2a;
+}
+
+/* LinkedIn */
+.footer-btn.linkedin {
+  background-color: #0077b5;
+}
+
+.footer-btn.linkedin:hover {
+  background-color: #005e90;
+}
+
+.footer-credit {
+  font-size: 14px;
+  color: #aaa;
+  margin-top: 5px;
+}
