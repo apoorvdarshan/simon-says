@@ -27,8 +27,17 @@ A fantasy-themed memory game based on **Simon Says**, inspired by *How to Train 
 - CSS3 (Flexbox, glowing hover, color theme)  
 - JavaScript (game logic, sounds, easter eggs)
 
+## 🖼️ Screenshot
+
+<p align="left">
+  <img src="https://github.com/user-attachments/assets/f4d83c01-cc6b-4fcf-a840-9ac81e9ef62e" width="300"/>
+</p>
+> A glimpse of the dragon-themed UI with glowing buttons and custom icons 🐲
+
+
 ## 🎬 Gameplay Preview
 
+📺 [Watch the full video on YouTube](https://www.youtube.com/watch?v=A43GjLVSFOc)
 
 
 ---
