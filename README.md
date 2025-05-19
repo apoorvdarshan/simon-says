@@ -29,7 +29,7 @@ A fantasy-themed memory game based on **Simon Says**, inspired by *How to Train 
 
 ## 🎬 Gameplay Preview
 
-
+<video src="tutorial.mp4" controls width="100%"></video>
 
 ---
 
