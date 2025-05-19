@@ -417,3 +417,7 @@ h1 {
   color: #aaa;
   margin-top: 5px;
 }
+
+.btn {
+  -webkit-tap-highlight-color: transparent; /* Chrome/Safari/Android */
+}
