@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simon Says Game</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <h1>Simon Says</h1>
+    <div class="ui-panel">
+      <div class="start-score-row">
+        <button id="start">Start</button>
+        <div id="score-box">Score:&nbsp;<span id="score-display">0</span></div>
+      </div>
+      <h2 id="game-status">Level 1</h2>
+    </div>
+
+    <div class="btn-container">
+      <div class="line-one">
+        <div id="red" class="btn red">
+          <img src="icon-dragon.png" class="btn-icon" />
+        </div>
+        <div id="yellow" class="btn yellow">
+          <img src="icon-fire.png" class="btn-icon" />
+        </div>
+      </div>
+
+      <div class="line-two">
+        <div id="green" class="btn green">
+          <img src="icon-axe.png" class="btn-icon" />
+        </div>
+        <div id="purple" class="btn purple">
+          <img src="icon-helmet.png" class="btn-icon" />
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="footer-links">
+        <a
+          href="https://apoorvdarshan.github.io/simon-says"
+          class="footer-btn github"
+          target="_blank"
+        >
+          <i class="fa-brands fa-github"></i> GitHub Code
+        </a>
+        <a
+          href="https://x.com/apoorvdarshan"
+          class="footer-btn twitter"
+          target="_blank"
+        >
+          <i class="fa-brands fa-x-twitter"></i>
+        </a>
+        <a
+          href="https://www.linkedin.com/in/apoorvdarshan"
+          class="footer-btn linkedin"
+          target="_blank"
+        >
+          <i class="fa-brands fa-linkedin"></i>
+        </a>
+      </div>
+      <p class="footer-credit">Made by Apoorv Darshan</p>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>
