@@ -4,11 +4,11 @@ A fantasy-themed memory game based on **Simon Says**, inspired by *How to Train 
 
 ## 🔗 Live Demo
 
-🎮 [Play Online](https://apoorvdarshan.github.io/simon-says)
+🎮 [Play Online](https://simon-says.aopv.dev)
 
 ## 💻 Source Code
 
-📂 [GitHub Repository](https://github.com/apoorvdarshan/simon-says)
+📂 [GitHub Repository](https://github.com/aopv/simon-says)
 
 ---
 
@@ -44,7 +44,7 @@ A fantasy-themed memory game based on **Simon Says**, inspired by *How to Train 
 
 ## 🌐 Connect
 
-Created by [Apoorv Darshan](https://github.com/apoorvdarshan)  
+Created by [Apoorv Darshan](https://github.com/aopv)  
 Open to feedback, forks, or improvements!
 
 ---
